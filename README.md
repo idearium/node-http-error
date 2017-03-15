@@ -1,16 +1,14 @@
 # node-http-error
 
-[![Build Status](https://travis-ci.org/allanchau/node-http-error.svg?branch=master)](https://travis-ci.org/allanchau/node-http-error)
+[![Build Status](https://img.shields.io/travis/allanchau/node-http-error.svg)](https://travis-ci.org/allanchau/node-http-error)
+[![npm](https://img.shields.io/npm/v/allanchau-http-error.svg)](https://www.npmjs.com/package/allanchau-http-error)
 
 Simple Express HTTP error handler.
 
 ## Features
 
 - Express HTTP error handler.
-
-## Requirements
-
- - [Node.js](https://nodejs.org/en/)
+- JSON response.
 
 ## Installation
 
