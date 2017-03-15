@@ -1,5 +1,7 @@
 # node-http-error
 
+[![Build Status](https://travis-ci.org/allanchau/node-http-error.svg?branch=master)](https://travis-ci.org/allanchau/node-http-error)
+
 Simple Express HTTP error handler.
 
 ## Features
