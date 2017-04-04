@@ -5,6 +5,10 @@
 
 Simple Express HTTP error handler.
 
+This library follows the [Microsoft API](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#51-errors) guidelines for HTTP error responses. While defaults are provided for `code` and `message` (they are required), you should provide your own.
+
+For an example of a compliant response, see the  [error-condition-responses](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses) section of the guidelines.
+
 ## Features
 
 - Express HTTP error handler.
