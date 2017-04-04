@@ -1,5 +1,5 @@
 // http://www.ietf.org/assignments/http-status-codes/http-status-codes.xml
-const StatusCodes = {
+const statusCodes = {
   100: 'Continue',
   101: 'Switching Protocols',
   102: 'Processing',
@@ -65,35 +65,79 @@ const StatusCodes = {
   511: 'Network Authentication Required',
 };
 
+/**
+ * Validates and filters an error object.
+ * @param  {Object} [error={}] The error object to filter.
+ * @return {Object}            Filtered error object.
+ */
+function validateError(error) {
+
+  if (!error) {
+    return {};
+  }
+
+  const validProperties = ['code', 'message', 'target', 'details', 'innererror'];
+  const properties = Object.keys(error).filter(property => validProperties.includes(property));
+  const validError = {};
+  const has = Object.prototype.hasOwnProperty;
+
+  for (const property of properties) {
+
+    if (has.call(error, property)) {
+      validError[property] = error[property];
+    }
+
+  }
+
+  return validError;
+
+}
+
+/**
+ * Validates a HTTP status code.
+ * @param  {Number} code HTTP status code.
+ * @return {Number}      The HTTP status code.
+ */
+function validateStatusCode(code) {
+
+  if (!code) {
+    return false;
+  }
+
+  return Object.keys(statusCodes).includes(code.toString());
+
+}
+
 class HttpError extends Error {
 
   /**
    * Create a HttpError.
-   * @param {Number} statusCode The HTTP status code
-   * @param {String} [message=statusCodes[statusCode]] An optional error message
+   * @param  {Number} code    The HTTP status code.
+   * @param  {Object} options HttpError options.
    */
-  constructor(statusCode, message = StatusCodes[statusCode]) {
+  constructor(code, options) {
 
-    super(message);
+    const defaultCode = 400;
+    const filteredOptions = validateError(options);
+    const statusCode = validateStatusCode(code) ? code : defaultCode;
+    const status = statusCodes[statusCode];
+    const errorMessage = `${statusCode} ${statusCodes[statusCode]}`;
 
-    const defaultStatusCode = 400;
-    const has = Object.prototype.hasOwnProperty;
+    super(errorMessage);
 
-    this.statusCode = defaultStatusCode;
-    this.description = StatusCodes[defaultStatusCode];
+    const defaults = {
+      code: status,
+      message: status,
+    };
 
-    if (has.call(StatusCodes, statusCode)) {
-
-      this.statusCode = statusCode;
-      this.description = StatusCodes[statusCode];
-
-    }
+    this.statusCode = statusCode;
+    this.error = Object.assign(defaults, filteredOptions);
 
     if (typeof Error.captureStackTrace === 'function') {
       Error.captureStackTrace(this, this.constructor);
     }
 
-    this.stack = (new Error(message)).stack;
+    this.stack = (new Error(errorMessage)).stack;
 
   }
 
@@ -101,13 +145,9 @@ class HttpError extends Error {
 
     if (err instanceof HttpError) {
 
-      /* eslint-disable sort-keys */
-      return res.status(err.statusCode).json({
-        code: err.statusCode,
-        status: err.description,
-        message: err.message,
-      });
-      /* eslint-enable sort-keys */
+      const { error } = err;
+
+      return res.status(err.statusCode).json({ error });
 
     }
 

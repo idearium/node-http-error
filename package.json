@@ -1,13 +1,15 @@
 {
-  "version": "1.0.1",
+  "version": "2.0.0",
   "name": "allanchau-http-error",
   "description": "Simple Express HTTP error handler.",
   "keywords": [
+    "api",
     "error",
     "errorhandler",
     "express",
     "handler",
-    "http"
+    "http",
+    "json"
   ],
   "author": "Allan Chau <allan.chau@icloud.com> (http://allanchau.com)",
   "repository": {
@@ -18,6 +20,9 @@
     "url": "https://github.com/allanchau/node-http-error/issues"
   },
   "main": "./src/http-error.js",
+  "files": [
+    "./src"
+  ],
   "peerDependencies": {
     "express": "^4.15.2"
   },
@@ -30,7 +35,7 @@
     "supertest": "^3.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/_mocha ./src/tests/"
+    "test": "./node_modules/.bin/_mocha ./tests/"
   },
   "license": "MIT"
 }
