@@ -2,7 +2,7 @@
 /* eslint-disable func-names, no-magic-numbers, prefer-arrow-callback */
 
 const express = require('express');
-const HttpError = require('../src/http-error');
+const HttpError = require('../src/index');
 const request = require('supertest');
 
 /**
