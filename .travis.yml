@@ -1,23 +1,24 @@
+# Language
+cache: yarn
 language: node_js
 node_js:
   - "6"
-
-cache: yarn
-
 before_script:
   - yarn
-
 script:
   - yarn test
 
+# Deployment
 deploy:
-  provider: npm
-  email: "allan.chau@icloud.com"
-  api_key: "$NPM_AUTH_TOKEN"
+  api_key: $NPM_API_KEY
+  email: $NPM_EMAIL_ADDRESS
   on:
     branch: master
     tags: true
+  provider: npm
 
+# Integration and Notifications
 notifications:
   email:
+    on_failure: always
     on_success: never

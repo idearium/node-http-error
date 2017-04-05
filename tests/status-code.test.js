@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* eslint-disable func-names, no-magic-numbers, prefer-arrow-callback */
-
 const express = require('express');
 const HttpError = require('../src/index');
 const request = require('supertest');

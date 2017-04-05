@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.1 - 5 April 2017
+
+- Update to use `eslint-config-allanchau`.
+
 ## v2.0.0 - 4 April 2017
 
 - Comply with Microsoft API guidelines.

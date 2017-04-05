@@ -1,3 +1,5 @@
+'use strict';
+
 // http://www.ietf.org/assignments/http-status-codes/http-status-codes.xml
 const statusCodes = {
   100: 'Continue',
@@ -70,14 +72,15 @@ const statusCodes = {
  * @param  {Object} [error={}] The error object to filter.
  * @return {Object}            Filtered error object.
  */
-function validateError(error) {
+const validateError = (error) => {
 
   if (!error) {
     return {};
   }
 
   const validProperties = ['code', 'message', 'target', 'details', 'innererror'];
-  const properties = Object.keys(error).filter(property => validProperties.includes(property));
+  const keys = Object.keys(error);
+  const properties = keys.filter(property => validProperties.includes(property));
   const validError = {};
   const has = Object.prototype.hasOwnProperty;
 
@@ -91,22 +94,24 @@ function validateError(error) {
 
   return validError;
 
-}
+};
 
 /**
  * Validates a HTTP status code.
  * @param  {Number} code HTTP status code.
  * @return {Number}      The HTTP status code.
  */
-function validateStatusCode(code) {
+const validateStatusCode = (code) => {
 
   if (!code) {
     return false;
   }
 
-  return Object.keys(statusCodes).includes(code.toString());
+  const keys = Object.keys(statusCodes);
 
-}
+  return keys.includes(code.toString());
+
+};
 
 class HttpError extends Error {
 
@@ -147,7 +152,8 @@ class HttpError extends Error {
 
       const { error } = err;
 
-      return res.status(err.statusCode).json({ error });
+      return res.status(err.statusCode)
+        .json({ error });
 
     }
 
