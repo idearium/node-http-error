@@ -27,11 +27,11 @@
     "express": "^4.15.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint-config-allanchau": "^2.0.0",
+    "chai": "^4.1.2",
+    "eslint-config-allanchau": "^3.0.3",
     "express": "^4.15.2",
     "mocha": "^3.2.0",
-    "mocha-eslint": "^3.0.1",
+    "mocha-eslint": "^4.1.0",
     "supertest": "^3.0.0"
   },
   "scripts": {
