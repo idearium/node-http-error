@@ -1,7 +1,6 @@
 # node-http-error
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/allanchau/node-http-error.svg)](https://greenkeeper.io/)
-
 [![Build Status](https://img.shields.io/travis/allanchau/node-http-error.svg)](https://travis-ci.org/allanchau/node-http-error)
 [![npm](https://img.shields.io/npm/v/allanchau-http-error.svg)](https://www.npmjs.com/package/allanchau-http-error)
 
