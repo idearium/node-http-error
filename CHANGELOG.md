@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.1.0 - 1 December 2017
+## v2.1.1 - 1 December 2017
 
 - Added some simple debugging for the error handler. You can enable this by setting the environment variable `DEBUG=allanchau-http-error`.
 
