@@ -2,7 +2,7 @@
 
 ## v2.1.0 - 1 December 2017
 
-- Added some simple debugging for the error handler. You can enable this by setting the environment variable `DEBUG=node-http-error`.
+- Added some simple debugging for the error handler. You can enable this by setting the environment variable `DEBUG=allanchau-http-error`.
 
 ## v2.0.1 - 5 April 2017
 
