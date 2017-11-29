@@ -1,5 +1,5 @@
 const express = require('express');
-const HttpError = require('../src/index');
+const HttpError = require('../lib/index');
 const request = require('supertest');
 
 /**
