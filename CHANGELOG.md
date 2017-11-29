@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.0 - 1 December 2017
+
+- Added some simple debugging for the error handler. You can enable this by setting the environment variable `DEBUG=node-http-error`.
+
 ## v2.0.1 - 5 April 2017
 
 - Update to use `eslint-config-allanchau`.
