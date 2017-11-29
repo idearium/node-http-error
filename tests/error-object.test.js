@@ -4,76 +4,64 @@ const request = require('supertest');
 
 /**
  * Target property.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function targetProperty(req, res, next) {
-  return next(new HttpError(400, { target: 'Target' }));
-}
+const targetProperty = (req, res, next) => next(new HttpError(400, { target: 'Target' }));
 
 /**
  * Details property.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function detailsProperty(req, res, next) {
-
-  return next(new HttpError(400, {
-    details: [
-      {
-        code: 'NullValue',
-        message: 'Phone number must not be null',
-        target: 'PhoneNumber',
-      },
-    ],
-  }));
-
-}
+const detailsProperty = (req, res, next) => next(new HttpError(400, {
+  details: [
+    {
+      code: 'NullValue',
+      message: 'Phone number must not be null',
+      target: 'PhoneNumber',
+    },
+  ],
+}));
 
 /**
  * Innererror property.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function innererrorProperty(req, res, next) {
-
-  return next(new HttpError(400, {
+const innererrorProperty = (req, res, next) => next(new HttpError(400, {
+  innererror: {
     innererror: {
-      innererror: {
-        characterTypes: ['lowerCase', 'upperCase', 'number', 'symbol'],
-        code: 'PasswordDoesNotMeetPolicy',
-        innererror: { code: 'PasswordReuseNotAllowed' },
-        maxLength: 64,
-        minDistinctCharacterTypes: 2,
-        minLength: 6,
-      },
+      characterTypes: ['lowerCase', 'upperCase', 'number', 'symbol'],
+      code: 'PasswordDoesNotMeetPolicy',
+      innererror: { code: 'PasswordReuseNotAllowed' },
+      maxLength: 64,
+      minDistinctCharacterTypes: 2,
+      minLength: 6,
     },
-  }));
-
-}
+  },
+}));
 
 /**
  * Incorrect property.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function incorrectProperty(req, res, next) {
-  return next(new HttpError(400, { someproperty: 'This should not show up!' }));
-}
+const incorrectProperty = (req, res, next) => next(new HttpError(400, { someproperty: 'This should not show up!' }));
 
-describe('HttpError error object', function () {
+describe('HttpError error object', () => {
 
   const app = express();
 
-  before(function () {
+  beforeAll(() => {
 
     app.get('/target-property', targetProperty);
     app.get('/details-property', detailsProperty);
@@ -84,9 +72,9 @@ describe('HttpError error object', function () {
 
   });
 
-  it('should return a target property if provided', function (done) {
+  it('should return a target property if provided', () => {
 
-    request(app)
+    return request(app)
       .get('/target-property')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -95,13 +83,13 @@ describe('HttpError error object', function () {
           message: 'Bad Request',
           target: 'Target',
         },
-      }, done);
+      });
 
   });
 
-  it('should return a details property if provided', function (done) {
+  it('should return a details property if provided', () => {
 
-    request(app)
+    return request(app)
       .get('/details-property')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -116,13 +104,13 @@ describe('HttpError error object', function () {
           ],
           message: 'Bad Request',
         },
-      }, done);
+      });
 
   });
 
-  it('should return an innererror property if provided', function (done) {
+  it('should return an innererror property if provided', () => {
 
-    request(app)
+    return request(app)
       .get('/innererror-property')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -140,13 +128,13 @@ describe('HttpError error object', function () {
           },
           message: 'Bad Request',
         },
-      }, done);
+      });
 
   });
 
-  it('should exclude invalid property names', function (done) {
+  it('should exclude invalid property names', () => {
 
-    request(app)
+    return request(app)
       .get('/incorrect-property')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -154,7 +142,7 @@ describe('HttpError error object', function () {
           code: 'Bad Request',
           message: 'Bad Request',
         },
-      }, done);
+      });
 
   });
 
