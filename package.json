@@ -25,7 +25,7 @@
     "lib"
   ],
   "scripts": {
-    "lint": "./node_modules/.bin/eslint */*.js */**/*.js --quiet --ignore-pattern node_modules",
+    "lint": "./node_modules/.bin/eslint */*.js */**/*.js --quiet --ignore-pattern node_modules --ignore-pattern coverage",
     "report-coverage": "codecov",
     "test": "./node_modules/.bin/npm-run-all --parallel lint test-lib",
     "test-lib": "jest"
@@ -43,5 +43,8 @@
     "jest": "^21.2.1",
     "npm-run-all": "^4.1.2",
     "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "debug": "^3.1.0"
   }
 }
