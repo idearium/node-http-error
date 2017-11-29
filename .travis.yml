@@ -1,24 +1,30 @@
-# Language
 cache: yarn
 language: node_js
 node_js:
-  - "6"
-before_script:
-  - yarn
+- '6'
+- '7'
+- '8'
+before_install:
+- yarn global add greenkeeper-lockfile@1
+install: yarn
+before_script: greenkeeper-lockfile-update
 script:
-  - yarn test
-
-# Deployment
+- yarn test
+after_script: greenkeeper-lockfile-upload
+after_success: yarn report-coverage
 deploy:
-  api_key: $NPM_API_KEY
-  email: $NPM_EMAIL_ADDRESS
+  api_key: "$NPM_API_KEY"
+  email: "$NPM_EMAIL_ADDRESS"
   on:
     branch: master
     tags: true
   provider: npm
-
-# Integration and Notifications
 notifications:
   email:
-    on_failure: always
+    on_failure: never
     on_success: never
+  slack:
+    secure: cat5sgdKawnNY89OgTInEYyzOEoHYMuhsjU5/N/bCSWwGgh8/DOfSei2Ih12660yrsOH2ttT3MFRtyVkJQKCpf3uU4QHYe9fnw+/9w4OrMA0aXQ4jv6659b9pHQfh4miKug05dgZ09p+gSQRDuNwi5abm5dNeWeb/J91W1/RhzM3k4gon76vrsz4wBy51VAFA/8QHhDwfqyostDEDaSjHU9wKCmhVIpeL6g188/FWcd9BELP/XKOxD3YBbYSyzlo+9sIBj+8yIDLT1TPJu5xOgXEsZiRDkkHL26qE2y+zPMTQ+OS8hlzdBNOqloxTbluiEgBFBsL97ibRCvU6MoiV+735QRjaNZA2upsMeUZ+b9/2kThYcAlU//FEujnjwYeXARhojAt4HZ/PNH1TiYAavWparodixuj3fbqiR9TOe5EBn4+3LMMAr1TZGIc+UBy68/FmsWLPgiOEVnC5JhWjs6AEdCwX84x3IbLOG5SdaWhSlWHvljzz9jSEbpjO5TkN55DT0iWjGubYV0WYdDz/ttyLN/k+BSbvJ57akBetjZqFUQi/dKBg/zCd2AyPkWWBHlGL4HzCYVrJLMSc6RFlQzQIheavayAcZykGVZY6hUR6MxYkfsBJOAopfPSfaF97GSlMAvQf3KDz6rdsr+pMCXTNUxPaftJr9p8DWh43M4=
+env:
+  global:
+    secure: l6oiJheyyzDirXSmwrmcwixP+HljSWWZvK7dSDxFW0JJ43W9xxeD3zTGtLZmdXjxEApvuUnkXILgfE9POyxBgc8a/2U037ak3W7jzkVPns3VO/7NeNfVAIHvIVISt4FGZr9p/nGRsUkh1JkxH6usc/8Oz/krPDVSN6vn9FjQ4AR7i5D2yonFJktR8yOSCV4SGwqRAPa3KFOAw/PBFjMa17DphMaLmIaBLj7PHk0XmKzRd1g86jbN1+eyw2H9Hm4kPWk0raXTiZ/AjMNJLLfr2idSQfujGXqLZMXvLH42+iQqjbGamJ5sIm6fLZXxt6lsjswlxoVaTEVJ2sY1BLtzW4LMmbUYi+Kk9mmgtDjg0ns6Qxrzi4KTN4wHIeXZozh9a+dahY74kCVlkhH52wphIqVa57qMp10v8ep8zYWXGzYo0PEvCr/+v805f9o8JZgXy1IKD9jLWESlxdlR9rMYhySm/4VkR4xuJrAQ0NVE8iNKktOr8HKOQQZuiCKPewjTDVYAK6JNuB1SgV/i8IObEmoeneSwUc8+5QlT6kcGQtpw+918TklwB5fi/Hgx6oYjJppNVfuLiQJDJAPftQ/93Vfzoltz0Ln+8E3XYj0a3V6VYWxX5+PqMf0qQAaePv1ca6Fujq5VeL6mOgi8Smh/afGdKNgCHn59BAzFQ7eBH7k=

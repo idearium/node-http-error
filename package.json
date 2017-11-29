@@ -11,32 +11,37 @@
     "http",
     "json"
   ],
-  "author": "Allan Chau <allan.chau@icloud.com> (http://allanchau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/allanchau/node-http-error"
   },
+  "author": "Allan Chau <allan.chau@icloud.com> (http://allanchau.com)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/allanchau/node-http-error/issues"
   },
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "files": [
-    "src"
+    "lib"
   ],
-  "peerDependencies": {
-    "express": "^4.15.2"
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint */*.js */**/*.js --quiet --ignore-pattern node_modules",
+    "report-coverage": "codecov",
+    "test": "./node_modules/.bin/npm-run-all --parallel lint test-lib",
+    "test-lib": "jest"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "devDependencies": {
-    "eslint-config-allanchau": "^3.0.3",
-    "express": "^4.15.2",
+    "@allanchau/eslint-config": "^5.1.0",
+    "codecov": "^3.0.0",
+    "eslint": "^4.12.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "express": "^4.16.2",
+    "jest": "^21.2.1",
+    "npm-run-all": "^4.1.2",
     "supertest": "^3.0.0"
-  },
-  "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watch"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "jest": "^21.2.1"
   }
 }

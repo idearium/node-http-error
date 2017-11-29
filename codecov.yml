@@ -1,0 +1,12 @@
+coverage:
+  notify:
+    slack:
+      default:
+        url: 'https://hooks.slack.com/services/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'
+        threshold: 1%
+        only_pulls: false
+        branches: null
+        flags: null
+        paths: null
+fixes:
+  - 'dist/::lib/'
