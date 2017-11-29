@@ -4,75 +4,63 @@ const request = require('supertest');
 
 /**
  * Error statusCode.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function errorStatusCode(req, res, next) {
-  return next(new HttpError(401));
-}
+const errorStatusCode = (req, res, next) => next(new HttpError(401));
 
 /**
  * Undefined statusCode.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function undefinedStatusCode(req, res, next) {
-  return next(new HttpError());
-}
+const undefinedStatusCode = (req, res, next) => next(new HttpError());
 
 /**
  * Example null statusCode route.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function nullStatusCode(req, res, next) {
-  return next(new HttpError(null));
-}
+const nullStatusCode = (req, res, next) => next(new HttpError(null));
 
 /**
  * Text statusCode.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function textStatusCode(req, res, next) {
-  return next(new HttpError('Oops'));
-}
+const textStatusCode = (req, res, next) => next(new HttpError('Oops'));
 
 /**
  * Array statusCode.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function arrayStatusCode(req, res, next) {
-  return next(new HttpError(['error']));
-}
+const arrayStatusCode = (req, res, next) => next(new HttpError(['error']));
 
 /**
  * Object statusCode.
- * @param  {Object}   req  Express request object.
- * @param  {Object}   res  Express response object.
- * @param  {Function} next Express next function.
- * @return {HttpError}     HttpError object.
+ * @param {Object} req HTTP request object.
+ * @param {Object} res HTTP response object.
+ * @param {Function} next Call the next middleware.
+ * @return {HttpError} HttpError object.
  */
-function objectStatusCode(req, res, next) {
-  return next(new HttpError({ error: 'error' }));
-}
+const objectStatusCode = (req, res, next) => next(new HttpError({ error: 'error' }));
 
-describe('HttpError status codes', function () {
+describe('HttpError status codes', () => {
 
   const app = express();
 
-  before(function () {
+  beforeAll(() => {
 
     app.get('/error-status-code', errorStatusCode);
     app.get('/undefined-status-code', undefinedStatusCode);
@@ -85,9 +73,9 @@ describe('HttpError status codes', function () {
 
   });
 
-  it('should return an error object', function (done) {
+  it('should return an error object', () => {
 
-    request(app)
+    return request(app)
       .get('/error-status-code')
       .expect('Content-Type', /json/)
       .expect(401, {
@@ -95,13 +83,13 @@ describe('HttpError status codes', function () {
           code: 'Unauthorized',
           message: 'Unauthorized',
         },
-      }, done);
+      });
 
   });
 
-  it('should default to 400 Bad Request for undefined status codes', function (done) {
+  it('should default to 400 Bad Request for undefined status codes', () => {
 
-    request(app)
+    return request(app)
       .get('/undefined-status-code')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -109,13 +97,13 @@ describe('HttpError status codes', function () {
           code: 'Bad Request',
           message: 'Bad Request',
         },
-      }, done);
+      });
 
   });
 
-  it('should default to 400 Bad Request for null status codes', function (done) {
+  it('should default to 400 Bad Request for null status codes', () => {
 
-    request(app)
+    return request(app)
       .get('/null-status-code')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -123,13 +111,13 @@ describe('HttpError status codes', function () {
           code: 'Bad Request',
           message: 'Bad Request',
         },
-      }, done);
+      });
 
   });
 
-  it('should default to 400 Bad Request for text status codes', function (done) {
+  it('should default to 400 Bad Request for text status codes', () => {
 
-    request(app)
+    return request(app)
       .get('/text-status-code')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -137,13 +125,13 @@ describe('HttpError status codes', function () {
           code: 'Bad Request',
           message: 'Bad Request',
         },
-      }, done);
+      });
 
   });
 
-  it('should default to 400 Bad Request for array status codes', function (done) {
+  it('should default to 400 Bad Request for array status codes', () => {
 
-    request(app)
+    return request(app)
       .get('/text-status-code')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -151,13 +139,13 @@ describe('HttpError status codes', function () {
           code: 'Bad Request',
           message: 'Bad Request',
         },
-      }, done);
+      });
 
   });
 
-  it('should default to 400 Bad Request for object status codes', function (done) {
+  it('should default to 400 Bad Request for object status codes', () => {
 
-    request(app)
+    return request(app)
       .get('/text-status-code')
       .expect('Content-Type', /json/)
       .expect(400, {
@@ -165,7 +153,7 @@ describe('HttpError status codes', function () {
           code: 'Bad Request',
           message: 'Bad Request',
         },
-      }, done);
+      });
 
   });
 

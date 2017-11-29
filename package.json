@@ -27,15 +27,16 @@
     "express": "^4.15.2"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
     "eslint-config-allanchau": "^3.0.3",
     "express": "^4.15.2",
-    "mocha": "^3.2.0",
-    "mocha-eslint": "^4.1.0",
     "supertest": "^3.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/_mocha tests"
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^21.2.1"
+  }
 }
