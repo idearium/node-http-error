@@ -35,7 +35,7 @@
     "collectCoverage": true
   },
   "devDependencies": {
-    "@allanchau/eslint-config": "^5.1.0",
+    "@allanchau/eslint-config": "^8.1.4",
     "codecov": "^3.0.0",
     "eslint": "^4.12.0",
     "eslint-plugin-jest": "^21.3.2",
