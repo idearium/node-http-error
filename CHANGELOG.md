@@ -4,6 +4,7 @@
 
 - Updated all dependencies.
 - Added prettier.
+- Complete rewrite to export middleware that adds a `res.error(Error|Strinf)` function.
 
 ## v2.1.1 - 1 December 2017
 
