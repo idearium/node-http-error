@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.0 - 29 June 2019
+
+- Updated all dependencies.
+- Added prettier.
+- Complete rewrite to export middleware that adds a `res.error(Error|String)` function.
+
 ## v2.1.1 - 1 December 2017
 
 - Added some simple debugging for the error handler. You can enable this by setting the environment variable `DEBUG=allanchau-http-error`.
