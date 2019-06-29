@@ -1,6 +1,5 @@
 # node-http-error
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/allanchau/node-http-error.svg)](https://greenkeeper.io/)
 [![Build Status](https://img.shields.io/travis/allanchau/node-http-error.svg)](https://travis-ci.org/allanchau/node-http-error)
 [![npm](https://img.shields.io/npm/v/allanchau-http-error.svg)](https://www.npmjs.com/package/allanchau-http-error)
 
@@ -8,7 +7,7 @@ Simple Express HTTP error handler.
 
 This library follows the [Microsoft API](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#51-errors) guidelines for HTTP error responses. While defaults are provided for `code` and `message` (they are required), you should provide your own.
 
-For an example of a compliant response, see the  [error-condition-responses](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses) section of the guidelines.
+For an example of a compliant response, see the [error-condition-responses](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses) section of the guidelines.
 
 ## Features
 
@@ -19,36 +18,36 @@ For an example of a compliant response, see the  [error-condition-responses](htt
 
 This package is available on [NPM](https://www.npmjs.com/package/allanchau-http-error):
 
-  ```shell
-  $ npm install allanchau-http-error
-  ```
-  
+```shell
+$ npm install allanchau-http-error
+```
+
 ## Guides
 
 Here are the guides on what to put in the error object:
 
 ### ErrorResponse : Object
 
-Property | Type | Required | Description
--------- | ---- | -------- | -----------
-`error` | Error | ✔ | The error object.
+| Property | Type  | Required | Description       |
+| -------- | ----- | -------- | ----------------- |
+| `error`  | Error | ✔        | The error object. |
 
 ### Error : Object
 
-Property | Type | Required | Description
--------- | ---- | -------- | -----------
-`code` | String (enumerated) | ✔ | One of a server-defined set of error codes.
-`message` | String | ✔ | A human-readable representation of the error.
-`target` | String |  | The target of the error.
-`details` | Error[] |  | An array of details about specific errors that led to this reported error.
-`innererror` | InnerError |  | An object containing more specific information than the current object about the error.
+| Property     | Type                | Required | Description                                                                             |
+| ------------ | ------------------- | -------- | --------------------------------------------------------------------------------------- |
+| `code`       | String (enumerated) | ✔        | One of a server-defined set of error codes.                                             |
+| `message`    | String              | ✔        | A human-readable representation of the error.                                           |
+| `target`     | String              |          | The target of the error.                                                                |
+| `details`    | Error[]             |          | An array of details about specific errors that led to this reported error.              |
+| `innererror` | InnerError          |          | An object containing more specific information than the current object about the error. |
 
 ### InnerError : Object
 
-Property | Type | Required | Description
--------- | ---- | -------- | -----------
-`code` | String |  | A more specific error code than was provided by the containing error.
-`innererror` | InnerError |  | An object containing more specific information than the current object about the error.
+| Property     | Type       | Required | Description                                                                             |
+| ------------ | ---------- | -------- | --------------------------------------------------------------------------------------- |
+| `code`       | String     |          | A more specific error code than was provided by the containing error.                   |
+| `innererror` | InnerError |          | An object containing more specific information than the current object about the error. |
 
 ## Usage
 

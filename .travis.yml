@@ -1,20 +1,15 @@
 cache: yarn
 language: node_js
 node_js:
-- '6'
-- '7'
-- '8'
-before_install:
-- yarn global add greenkeeper-lockfile@1
+  - '8'
+  - '10'
 install: yarn
-before_script: greenkeeper-lockfile-update
 script:
-- yarn test
-after_script: greenkeeper-lockfile-upload
+  - yarn test
 after_success: yarn report-coverage
 deploy:
-  api_key: "$NPM_API_KEY"
-  email: "$NPM_EMAIL_ADDRESS"
+  api_key: '$NPM_API_KEY'
+  email: '$NPM_EMAIL_ADDRESS'
   on:
     branch: master
     tags: true
