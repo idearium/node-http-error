@@ -1516,16 +1516,16 @@ eslint-plugin-jest@^22.7.1:
   integrity sha512-Aecqe3ulBVI7amgOycVI8ZPL8o0SnGHOf3zn2/Ciu8TXyXDHcjtwD3hOs3ss/Qh/VAwlW/DMcuiXg5btgF+XMA==
 
 eslint-plugin-jsdoc@^15.2.0:
-  version "15.3.4"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-15.3.4.tgz#231e286e96b2d70fbbf2993cf811a58ac6737912"
-  integrity sha512-XHBnx/Yz/RigG7GxPeqR9rsrWwPUuNSR9N2tAIaqlqJOFT04Egncms6C8xykCbpBILct2auL32ZpBL5p27qoxQ==
+  version "15.3.5"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-15.3.5.tgz#58c637fac399d66b924d7adf237ae33d492ea2eb"
+  integrity sha512-yNeXw2o5bVB6WsQqKAZ5Kp3TVfZYFWi5bR/p/pVTJyNGHolaQZtyLhFwTbjiFcgZBKuOE6jiuLugDSGDkuSsHQ==
   dependencies:
     comment-parser "^0.5.5"
     debug "^4.1.1"
     escape-regex-string "^1.0.6"
     flat-map-polyfill "^0.3.8"
     jsdoctypeparser "5.0.1"
-    lodash "^4.17.11"
+    lodash "^4.17.13"
     regextras "^0.6.1"
 
 eslint-plugin-jsx-a11y@^6.2.1:
@@ -3431,7 +3431,7 @@ lodash.unescape@4.0.1:
   resolved "https://registry.yarnpkg.com/lodash.unescape/-/lodash.unescape-4.0.1.tgz#bf2249886ce514cda112fae9218cdc065211fc9c"
   integrity sha1-vyJJiGzlFM2hEvrpIYzcBlIR/Jw=
 
-lodash@^4.17.11, lodash@^4.17.4:
+lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.4:
   version "4.17.14"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
   integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
