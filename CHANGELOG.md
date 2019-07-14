@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Removed pino.
+
 ## v3.0.0 - 29 June 2019
 
 - Updated all dependencies.

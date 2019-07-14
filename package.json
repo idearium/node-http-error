@@ -65,7 +65,5 @@
     "react": "^16.8.6",
     "supertest": "^4.0.2"
   },
-  "dependencies": {
-    "pino": "^5.12.6"
-  }
+  "dependencies": {}
 }
